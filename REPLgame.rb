@@ -1,3 +1,4 @@
+# press play or apple + enter
 cases = []
 my_case = {}
 this_round = 1
@@ -39,19 +40,23 @@ while i < money.length
 end
 
 # player chooses case
-puts "\nChoose your case!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  my_case = cases[choice - 1]
-  cases.delete_at(my_case[:number]-1)
-  i += 1
-else
-  puts "Choose an available case!"
+loop do
+  puts "\nChoose your case!"
   choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    my_case = cases[choice - 1]
+    cases.delete_at(my_case[:number]-1)
+    i += 1
+    break
+  else
+    puts "Choose an available case!"
+    redo
+  end
 end
 puts "\nYour case is #{my_case[:number]}!"
-puts my_case
+sleep(2)
+# puts my_case
 
 # Round 1 turn 1
 i = 0
@@ -59,25 +64,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+    sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 2
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -87,24 +101,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value].to_i)
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 3
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -114,24 +137,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 4
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -141,24 +173,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 5
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -168,24 +209,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 1
 puts "\nOk, let's call the banker..."
@@ -203,24 +253,30 @@ puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+loop do
+  puts "\nDeal..."
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    puts my_case[:value]
+    if my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    puts "\n Ok... let's continue"
+    break
   else
-    puts "\nOuch!"
-    exit
+    redo
   end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... let's continue"
 end
 this_round += 1
 # Round 2 turn 6
@@ -229,25 +285,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 7
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -257,24 +322,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 8
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -284,24 +358,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 9
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -311,24 +394,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 10
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -338,24 +430,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 2
 puts "\nOk, let's call the banker..."
@@ -373,24 +474,30 @@ puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+loop do
+  puts "\nDeal..."
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    puts my_case[:value]
+    if my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    puts "\n Ok... let's continue"
+    break
   else
-    puts "\nOuch!"
-    exit
+    redo
   end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... let's continue"
 end
 this_round += 1
 
@@ -400,25 +507,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 12
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -428,24 +544,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 13
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -455,24 +580,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 14
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -482,24 +616,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 3
 puts "\nOk, let's call the banker..."
@@ -517,24 +660,30 @@ puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+loop do
+  puts "\nDeal..."
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    puts my_case[:value]
+    if my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    puts "\n Ok... let's continue"
+    break
   else
-    puts "\nOuch!"
-    exit
+    redo
   end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... let's continue"
 end
 this_round += 1
 
@@ -544,25 +693,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 16
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -572,24 +730,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 4
 puts "\nOk, let's call the banker..."
@@ -607,24 +774,30 @@ puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+loop do
+  puts "\nDeal..."
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    puts my_case[:value]
+    if my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    puts "\n Ok... let's continue"
+    break
   else
-    puts "\nOuch!"
-    exit
+    redo
   end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... let's continue"
 end
 this_round += 1
 
@@ -634,25 +807,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 # turn 18
 puts "\nChoose another case..."
 puts "\nCases remaining:\n"
@@ -662,24 +844,33 @@ while i < cases.length
   i += 1
 end
 puts "\n"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value].to_i)
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 5
 puts "\nOk, let's call the banker..."
@@ -697,24 +888,30 @@ puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+loop do
+  puts "\nDeal..."
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    puts my_case[:value]
+    if my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    puts "\n Ok... let's continue"
+    break
   else
-    puts "\nOuch!"
-    exit
+    redo
   end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... let's continue"
 end
 this_round += 1
 
@@ -724,25 +921,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 6
 puts "\nOk, let's call the banker..."
@@ -760,24 +966,30 @@ puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+loop do
+  puts "\nDeal..."
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    puts my_case[:value]
+    if my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    puts "\n Ok... let's continue"
+    break
   else
-    puts "\nOuch!"
-    exit
+    redo
   end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... let's continue"
 end
 this_round += 1
 
@@ -787,25 +999,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 7
 puts "\nOk, let's call the banker..."
@@ -823,24 +1044,30 @@ puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+loop do
+  puts "\nDeal..."
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    puts my_case[:value]
+    if my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    puts "\n Ok... let's continue"
+    break
   else
-    puts "\nOuch!"
-    exit
+    redo
   end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... let's continue"
 end
 this_round += 1
 
@@ -850,25 +1077,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 8
 puts "\nOk, let's call the banker..."
@@ -886,24 +1122,30 @@ puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+loop do
+  puts "\nDeal..."
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    puts my_case[:value]
+    if my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    puts "\n Ok... let's continue"
+    break
   else
-    puts "\nOuch!"
-    exit
+    redo
   end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... let's continue"
 end
 this_round += 1
 # Round 9 turn 22
@@ -912,25 +1154,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 9
 puts "\nOk, let's call the banker..."
@@ -948,24 +1199,30 @@ puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+loop do
+  puts "\nDeal..."
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    puts my_case[:value]
+    if my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    puts "\n Ok... let's continue"
+    break
   else
-    puts "\nOuch!"
-    exit
+    redo
   end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... let's continue"
 end
 this_round += 1
 # Round 9 turn 22
@@ -974,25 +1231,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 9
 puts "\nOk, let's call the banker..."
@@ -1010,24 +1276,30 @@ puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+loop do
+  puts "\nDeal..."
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    puts my_case[:value]
+    if my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    puts "\n Ok... let's continue"
+    break
   else
-    puts "\nOuch!"
-    exit
+    redo
   end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... let's continue"
 end
 this_round += 1
 # Round 9 turn 23
@@ -1036,25 +1308,34 @@ while i < cases.length
   puts cases[i][:number]
   i += 1
 end
-puts "\nSelect a case to eliminate!"
-choice = gets.chomp.to_i
-i = 0
-if cases.find {|x| x[:number] == choice}
-  case_choice = cases.find {|x| x[:number] == choice}
-  money.delete(case_choice[:value])
-  puts case_choice[:value]
-  puts case_choice
-  while i < cases.length
-    if cases[i][:value] == case_choice[:value]
-      cases.delete_at(i)
-      i += 1
-    else
-      i += 1
+loop do
+  puts "\nSelect a case to eliminate!"
+  choice = gets.chomp.to_i
+  i = 0
+  if cases.find {|x| x[:number] == choice}
+    case_choice = cases.find {|x| x[:number] == choice}
+    money.delete(case_choice[:value])
+    puts "$#{case_choice[:value]}"
+sleep(2)
+    # puts case_choice
+
+    while i < cases.length
+      if cases[i][:value] == case_choice[:value]
+        cases.delete_at(i)
+        i += 1
+      else
+        i += 1
+      end
     end
+    break
+  else
+    puts "Choose an available case!"
+    redo
   end
 end
 puts "\nMoney remaining:"
 puts money.sort
+sleep(2)
 
 #banker call 9
 puts "\nOk, let's call the banker..."
