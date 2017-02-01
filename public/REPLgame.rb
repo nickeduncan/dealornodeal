@@ -1,7 +1,7 @@
 # press play or apple + enter
 @cases = []
-my_case = {}
-this_round = 1
+@my_case = {}
+@this_round = 1
 @money = [0.01,
 1,
 5,
@@ -45,8 +45,8 @@ loop do
   choice = gets.chomp.to_i
   i = 0
   if @cases.find {|x| x[:number] == choice}
-    my_case = @cases[choice - 1]
-    @cases.delete_at(my_case[:number]-1)
+    @my_case = @cases[choice - 1]
+    @cases.delete_at(@my_case[:number]-1)
     i += 1
     break
   else
@@ -54,7 +54,7 @@ loop do
     redo
   end
 end
-puts "\nYour case is #{my_case[:number]}!"
+puts "\nYour case is #{@my_case[:number]}!"
 sleep(2)
 # puts my_case
 
@@ -94,6 +94,8 @@ def new_round
   puts @money.sort
   sleep(2)
 end
+new_round
+
 # turn 2
 def turn
   puts "\nChoose another case..."
@@ -132,54 +134,61 @@ def turn
   puts @money.sort
   sleep(2)
 end
+turn
+
 # turn 3
 turn
 # turn 4
 turn
 # turn 5
 turn
+
 #banker call 1
-puts "\nOk, let's call the banker..."
-puts "..."
-puts "  ..."
-@money_total = 0
-i = 0
-while i < @money.length
-  @money_total += @money[i]
-  i += 1
-end
-@money_average = @money_total/@money.length
-bank_offer = ((@money_average*this_round)/10).round
-puts "\nOk..."
-puts "I see..."
-puts "\nThe banker offers..."
-puts "$#{bank_offer}"
-loop do
-  puts "\nDeal..."
-  puts" ...or no deal?"
-  deal_choice = gets.chomp.downcase
-  if deal_choice == "deal"
-    puts"\nDEAL!!!"
-    puts "\nYou won #{bank_offer}!"
-    puts "\nLet's see what you had in your case..."
-    puts my_case[:value]
-    if my_case[:value] <= bank_offer
-      puts "\nNice deal!!"
-      exit
-    else
-      puts "\nOuch!"
-      exit
-    end
-    break
-  elsif deal_choice == "no deal"
-    puts "\nNo Deal!!\n"
-    puts "\n Ok... let's continue"
-    break
-  else
-    redo
+def banker_call
+  puts "\nOk, let's call the banker..."
+  puts "..."
+  puts "  ..."
+  @money_total = 0
+  i = 0
+  while i < @money.length
+    @money_total += @money[i]
+    i += 1
   end
+  @money_average = @money_total/@money.length
+  bank_offer = ((@money_average*@this_round)/10).round
+  puts "\nOk..."
+  puts "I see..."
+  puts "\nThe banker offers..."
+  puts "$#{bank_offer}"
+  loop do
+    puts "\nDeal..."
+    puts" ...or no deal?"
+    deal_choice = gets.chomp.downcase
+    if deal_choice == "deal"
+      puts"\nDEAL!!!"
+      puts "\nYou won #{bank_offer}!"
+      puts "\nLet's see what you had in your case..."
+      puts @my_case[:value]
+      if @my_case[:value] <= bank_offer
+        puts "\nNice deal!!"
+        exit
+      else
+        puts "\nOuch!"
+        exit
+      end
+      break
+    elsif deal_choice == "no deal"
+      puts "\nNo Deal!!\n"
+      puts "\n Ok... let's continue"
+      break
+    else
+      redo
+    end
+  end
+  @this_round += 1
 end
-this_round += 1
+banker_call
+
 # Round 2 turn 6
 new_round
 # turn 7
@@ -190,49 +199,8 @@ turn
 turn
 # turn 10
 turn
-
 #banker call 2
-puts "\nOk, let's call the banker..."
-puts "..."
-puts "   ..."
-@money_total = 0
-i = 0
-while i < @money.length
-  @money_total += @money[i]
-  i += 1
-end
-@money_average = @money_total/@money.length
-bank_offer = ((@money_average*this_round)/10).round
-puts "\nOk..."
-puts "I see..."
-puts "\nThe banker offers..."
-puts "$#{bank_offer}"
-loop do
-  puts "\nDeal..."
-  puts" ...or no deal?"
-  deal_choice = gets.chomp.downcase
-  if deal_choice == "deal"
-    puts"\nDEAL!!!"
-    puts "\nYou won #{bank_offer}!"
-    puts "\nLet's see what you had in your case..."
-    puts my_case[:value]
-    if my_case[:value] <= bank_offer
-      puts "\nNice deal!!"
-      exit
-    else
-      puts "\nOuch!"
-      exit
-    end
-    break
-  elsif deal_choice == "no deal"
-    puts "\nNo Deal!!\n"
-    puts "\n Ok... let's continue"
-    break
-  else
-    redo
-  end
-end
-this_round += 1
+banker_call
 
 # Round 3 turn 11
 new_round
@@ -243,320 +211,48 @@ turn
 # turn 14
 turn
 #banker call 3
-puts "\nOk, let's call the banker..."
-puts "..."
-puts "   ..."
-@money_total = 0
-i = 0
-while i < @money.length
-  @money_total += @money[i]
-  i += 1
-end
-@money_average = @money_total/@money.length
-bank_offer = ((@money_average*this_round)/10).round
-puts "\nOk..."
-puts "I see..."
-puts "\nThe banker offers..."
-puts "$#{bank_offer}"
-loop do
-  puts "\nDeal..."
-  puts" ...or no deal?"
-  deal_choice = gets.chomp.downcase
-  if deal_choice == "deal"
-    puts"\nDEAL!!!"
-    puts "\nYou won #{bank_offer}!"
-    puts "\nLet's see what you had in your case..."
-    puts my_case[:value]
-    if my_case[:value] <= bank_offer
-      puts "\nNice deal!!"
-      exit
-    else
-      puts "\nOuch!"
-      exit
-    end
-    break
-  elsif deal_choice == "no deal"
-    puts "\nNo Deal!!\n"
-    puts "\n Ok... let's continue"
-    break
-  else
-    redo
-  end
-end
-this_round += 1
+banker_call
 
 # Round 4 turn 15
 new_round
 # turn 16
 turn
 #banker call 4
-puts "\nOk, let's call the banker..."
-puts "..."
-puts "   ..."
-money_total = 0
-i = 0
-while i < money.length
-  money_total += money[i]
-  i += 1
-end
-money_average = money_total/money.length
-bank_offer = ((money_average*this_round)/10).round
-puts "\nOk..."
-puts "I see..."
-puts "\nThe banker offers..."
-puts "$#{bank_offer}"
-loop do
-  puts "\nDeal..."
-  puts" ...or no deal?"
-  deal_choice = gets.chomp.downcase
-  if deal_choice == "deal"
-    puts"\nDEAL!!!"
-    puts "\nYou won #{bank_offer}!"
-    puts "\nLet's see what you had in your case..."
-    puts my_case[:value]
-    if my_case[:value] <= bank_offer
-      puts "\nNice deal!!"
-      exit
-    else
-      puts "\nOuch!"
-      exit
-    end
-    break
-  elsif deal_choice == "no deal"
-    puts "\nNo Deal!!\n"
-    puts "\n Ok... let's continue"
-    break
-  else
-    redo
-  end
-end
-this_round += 1
+banker_call
 
 # Round 5 turn 17
-new_round# turn 18
+new_round
+# turn 18
 turn
 #banker call 5
-puts "\nOk, let's call the banker..."
-puts "..."
-puts "   ..."
-money_total = 0
-i = 0
-while i < money.length
-  money_total += money[i]
-  i += 1
-end
-money_average = money_total/money.length
-bank_offer = ((money_average*this_round)/10).round
-puts "\nOk..."
-puts "I see..."
-puts "\nThe banker offers..."
-puts "$#{bank_offer}"
-loop do
-  puts "\nDeal..."
-  puts" ...or no deal?"
-  deal_choice = gets.chomp.downcase
-  if deal_choice == "deal"
-    puts"\nDEAL!!!"
-    puts "\nYou won #{bank_offer}!"
-    puts "\nLet's see what you had in your case..."
-    puts my_case[:value]
-    if my_case[:value] <= bank_offer
-      puts "\nNice deal!!"
-      exit
-    else
-      puts "\nOuch!"
-      exit
-    end
-    break
-  elsif deal_choice == "no deal"
-    puts "\nNo Deal!!\n"
-    puts "\n Ok... let's continue"
-    break
-  else
-    redo
-  end
-end
-this_round += 1
+banker_call
 
 # Round 6 turn 19
 new_round
 #banker call 6
-puts "\nOk, let's call the banker..."
-puts "..."
-puts "   ..."
-money_total = 0
-i = 0
-while i < money.length
-  money_total += money[i]
-  i += 1
-end
-money_average = money_total/money.length
-bank_offer = ((money_average*this_round)/10).round
-puts "\nOk..."
-puts "I see..."
-puts "\nThe banker offers..."
-puts "$#{bank_offer}"
-loop do
-  puts "\nDeal..."
-  puts" ...or no deal?"
-  deal_choice = gets.chomp.downcase
-  if deal_choice == "deal"
-    puts"\nDEAL!!!"
-    puts "\nYou won #{bank_offer}!"
-    puts "\nLet's see what you had in your case..."
-    puts my_case[:value]
-    if my_case[:value] <= bank_offer
-      puts "\nNice deal!!"
-      exit
-    else
-      puts "\nOuch!"
-      exit
-    end
-    break
-  elsif deal_choice == "no deal"
-    puts "\nNo Deal!!\n"
-    puts "\n Ok... let's continue"
-    break
-  else
-    redo
-  end
-end
-this_round += 1
+banker_call
 
 # Round 7 turn 20
 new_round
 #banker call 7
-puts "\nOk, let's call the banker..."
-puts "..."
-puts "   ..."
-money_total = 0
-i = 0
-while i < money.length
-  money_total += money[i]
-  i += 1
-end
-money_average = money_total/money.length
-bank_offer = ((money_average*this_round)/10).round
-puts "\nOk..."
-puts "I see..."
-puts "\nThe banker offers..."
-puts "$#{bank_offer}"
-loop do
-  puts "\nDeal..."
-  puts" ...or no deal?"
-  deal_choice = gets.chomp.downcase
-  if deal_choice == "deal"
-    puts"\nDEAL!!!"
-    puts "\nYou won #{bank_offer}!"
-    puts "\nLet's see what you had in your case..."
-    puts my_case[:value]
-    if my_case[:value] <= bank_offer
-      puts "\nNice deal!!"
-      exit
-    else
-      puts "\nOuch!"
-      exit
-    end
-    break
-  elsif deal_choice == "no deal"
-    puts "\nNo Deal!!\n"
-    puts "\n Ok... let's continue"
-    break
-  else
-    redo
-  end
-end
-this_round += 1
+banker_call
 
 # Round 8 turn 21
 new_round
 #banker call 8
-puts "\nOk, let's call the banker..."
-puts "..."
-puts "   ..."
-money_total = 0
-i = 0
-while i < money.length
-  money_total += money[i]
-  i += 1
-end
-money_average = money_total/money.length
-bank_offer = ((money_average*this_round)/10).round
-puts "\nOk..."
-puts "I see..."
-puts "\nThe banker offers..."
-puts "$#{bank_offer}"
-loop do
-  puts "\nDeal..."
-  puts" ...or no deal?"
-  deal_choice = gets.chomp.downcase
-  if deal_choice == "deal"
-    puts"\nDEAL!!!"
-    puts "\nYou won #{bank_offer}!"
-    puts "\nLet's see what you had in your case..."
-    puts my_case[:value]
-    if my_case[:value] <= bank_offer
-      puts "\nNice deal!!"
-      exit
-    else
-      puts "\nOuch!"
-      exit
-    end
-    break
-  elsif deal_choice == "no deal"
-    puts "\nNo Deal!!\n"
-    puts "\n Ok... let's continue"
-    break
-  else
-    redo
-  end
-end
-this_round += 1
+banker_call
+
 # Round 9 turn 22
 new_round
 #banker call 9
-puts "\nOk, let's call the banker..."
-puts "..."
-puts "   ..."
-money_total = 0
-i = 0
-while i < money.length
-  money_total += money[i]
-  i += 1
-end
-money_average = money_total/money.length
-bank_offer = ((money_average*this_round)/10).round
-puts "\nOk..."
-puts "I see..."
-puts "\nThe banker offers..."
-puts "$#{bank_offer}"
-loop do
-  puts "\nDeal..."
-  puts" ...or no deal?"
-  deal_choice = gets.chomp.downcase
-  if deal_choice == "deal"
-    puts"\nDEAL!!!"
-    puts "\nYou won #{bank_offer}!"
-    puts "\nLet's see what you had in your case..."
-    puts my_case[:value]
-    if my_case[:value] <= bank_offer
-      puts "\nNice deal!!"
-      exit
-    else
-      puts "\nOuch!"
-      exit
-    end
-    break
-  elsif deal_choice == "no deal"
-    puts "\nNo Deal!!\n"
-    puts "\n Ok... let's continue"
-    break
-  else
-    redo
-  end
-end
-this_round += 1
-# Round 9 turn 22
+banker_call
+
+# Round 10 turn 23
+new_round
+#banker call 9
+banker_call
+
+# Round 11(Final) turn 24
 new_round
 #banker call 9
 puts "\nOk, let's call the banker..."
@@ -564,56 +260,12 @@ puts "..."
 puts "   ..."
 money_total = 0
 i = 0
-while i < money.length
-  money_total += money[i]
+while i < @money.length
+  @money_total += @money[i]
   i += 1
 end
-money_average = money_total/money.length
-bank_offer = ((money_average*this_round)/10).round
-puts "\nOk..."
-puts "I see..."
-puts "\nThe banker offers..."
-puts "$#{bank_offer}"
-loop do
-  puts "\nDeal..."
-  puts" ...or no deal?"
-  deal_choice = gets.chomp.downcase
-  if deal_choice == "deal"
-    puts"\nDEAL!!!"
-    puts "\nYou won #{bank_offer}!"
-    puts "\nLet's see what you had in your case..."
-    puts my_case[:value]
-    if my_case[:value] <= bank_offer
-      puts "\nNice deal!!"
-      exit
-    else
-      puts "\nOuch!"
-      exit
-    end
-    break
-  elsif deal_choice == "no deal"
-    puts "\nNo Deal!!\n"
-    puts "\n Ok... let's continue"
-    break
-  else
-    redo
-  end
-end
-this_round += 1
-# Round 9 turn 23
-new_round
-#banker call 9
-puts "\nOk, let's call the banker..."
-puts "..."
-puts "   ..."
-money_total = 0
-i = 0
-while i < money.length
-  money_total += money[i]
-  i += 1
-end
-money_average = money_total/money.length
-bank_offer = ((money_average*this_round)/10).round
+@money_average = @money_total/@money.length
+bank_offer = ((@money_average*@this_round)/10).round
 puts "\nOk..."
 puts "I see..."
 puts "\nThe banker offers..."
@@ -625,8 +277,8 @@ if deal_choice == "deal"
   puts"\nDEAL!!!"
   puts "\nYou won #{bank_offer}!"
   puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] <= bank_offer
+  puts @my_case[:value]
+  if @my_case[:value] <= bank_offer
     puts "\nNice deal!!"
     exit
   else
@@ -637,8 +289,8 @@ elsif deal_choice == "no deal"
   puts "\nNo Deal!!\n"
   puts "\n Ok... "
   puts "\nLet's see what you had in your case..."
-  puts my_case[:value]
-  if my_case[:value] >= bank_offer
+  puts @my_case[:value]
+  if @my_case[:value] >= bank_offer
     puts "\nNice deal!!"
     exit
   else
