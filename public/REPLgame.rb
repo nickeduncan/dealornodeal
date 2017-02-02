@@ -30,7 +30,7 @@ loop do
   end
 end
 puts "\nYour case is #{@my_case[:number]}!"
-sleep(2)
+sleep(1)
 # puts my_case
 
 # Round 1 turn 1
@@ -48,7 +48,7 @@ def new_round
       case_choice = @cases.find {|x| x[:number] == choice}
       @money.delete(case_choice[:value])
       puts "$#{case_choice[:value]}"
-      sleep(2)
+      sleep(1)
       # puts case_choice
 
       while i < @cases.length
@@ -67,7 +67,7 @@ def new_round
   end
   puts "\nMoney remaining:"
   puts @money.sort
-  sleep(2)
+  sleep(1)
 end
 new_round
 
@@ -88,7 +88,7 @@ def turn
       case_choice = @cases.find {|x| x[:number] == choice}
       @money.delete(case_choice[:value].to_i)
       puts "$#{case_choice[:value]}"
-  sleep(2)
+  sleep(1)
       # puts case_choice
 
       while i < @cases.length
@@ -107,7 +107,7 @@ def turn
   end
   puts "\nMoney remaining:"
   puts @money.sort
-  sleep(2)
+  sleep(1)
 end
 turn
 
