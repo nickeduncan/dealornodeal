@@ -121,8 +121,11 @@ turn
 #banker call 1
 def banker_call
   puts "\nOk, let's call the banker..."
+  sleep(0.25)
   puts "..."
+  sleep(0.25)
   puts "  ..."
+  sleep(0.25)
   @money_total = 0
   i = 0
   while i < @money.length
@@ -132,18 +135,25 @@ def banker_call
   @money_average = @money_total/@money.length
   bank_offer = ((@money_average*@this_round)/10).round
   puts "\nOk..."
+  sleep(0.5)
   puts "I see..."
+  sleep(0.5)
   puts "\nThe banker offers..."
+  sleep(2)
   puts "$#{bank_offer}"
+  sleep(2)
   loop do
     puts "\nDeal..."
+    sleep(1)
     puts" ...or no deal?"
     deal_choice = gets.chomp.downcase
     if deal_choice == "deal"
       puts"\nDEAL!!!"
       puts "\nYou won #{bank_offer}!"
       puts "\nLet's see what you had in your case..."
+      sleep(2)
       puts @my_case[:value]
+      sleep(0.25)
       if @my_case[:value] <= bank_offer
         puts "\nNice deal!!"
         exit
@@ -154,6 +164,7 @@ def banker_call
       break
     elsif deal_choice == "no deal"
       puts "\nNo Deal!!\n"
+      sleep(0.5)
       puts "\n Ok... let's continue"
       break
     else
@@ -224,16 +235,19 @@ banker_call
 
 # Round 10 turn 23
 new_round
-#banker call 9
+#banker call 10
 banker_call
 
 # Round 11(Final) turn 24
 new_round
-#banker call 9
+#Final Banker Call
 puts "\nOk, let's call the banker..."
+sleep(0.25)
 puts "..."
-puts "   ..."
-money_total = 0
+sleep(0.25)
+puts "  ..."
+sleep(0.25)
+@money_total = 0
 i = 0
 while i < @money.length
   @money_total += @money[i]
@@ -242,34 +256,49 @@ end
 @money_average = @money_total/@money.length
 bank_offer = ((@money_average*@this_round)/10).round
 puts "\nOk..."
+sleep(0.5)
 puts "I see..."
+sleep(0.5)
 puts "\nThe banker offers..."
+sleep(2)
 puts "$#{bank_offer}"
-puts "\nDeal..."
-puts" ...or no deal?"
-deal_choice = gets.chomp.downcase
-if deal_choice == "deal"
-  puts"\nDEAL!!!"
-  puts "\nYou won #{bank_offer}!"
-  puts "\nLet's see what you had in your case..."
-  puts @my_case[:value]
-  if @my_case[:value] <= bank_offer
-    puts "\nNice deal!!"
-    exit
+sleep(2)
+loop do
+  puts "\nDeal..."
+  sleep(1)
+  puts" ...or no deal?"
+  deal_choice = gets.chomp.downcase
+  if deal_choice == "deal"
+    puts"\nDEAL!!!"
+    puts "\nYou won #{bank_offer}!"
+    puts "\nLet's see what you had in your case..."
+    sleep(2)
+    puts @my_case[:value]
+    sleep(0.25)
+    if @my_case[:value] <= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
+    break
+  elsif deal_choice == "no deal"
+    puts "\nNo Deal!!\n"
+    sleep(0.5)
+    puts "\n Ok... "
+    sleep(0.5)
+    puts "\nLet's see what you had in your case..."
+    sleep(2)
+    puts @my_case[:value]
+    if @my_case[:value] >= bank_offer
+      puts "\nNice deal!!"
+      exit
+    else
+      puts "\nOuch!"
+      exit
+    end
   else
-    puts "\nOuch!"
-    exit
-  end
-elsif deal_choice == "no deal"
-  puts "\nNo Deal!!\n"
-  puts "\n Ok... "
-  puts "\nLet's see what you had in your case..."
-  puts @my_case[:value]
-  if @my_case[:value] >= bank_offer
-    puts "\nNice deal!!"
-    exit
-  else
-    puts "\nOuch!"
-    exit
+    redo
   end
 end
